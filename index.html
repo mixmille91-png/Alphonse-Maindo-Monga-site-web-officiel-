@@ -1,9 +1,9 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professeur Alphonse Maindo - Université de Kisangani</title>
+    <title>Professeur Alphonse Maindo</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +16,6 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
-            line-height: 1.6;
         }
 
         .container {
@@ -29,94 +28,296 @@
         }
 
         .header {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('image/Maindo photo.jpg');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
-            padding: 60px 30px;
+            padding: 30px;
             text-align: center;
-            position: relative;
         }
 
         .header h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .header p {
             opacity: 0.9;
-            font-size: 1.3em;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.1em;
         }
 
         .main-content {
             padding: 40px;
         }
 
-        .section {
+        .input-section {
             background: #f8f9fa;
             padding: 30px;
             border-radius: 10px;
             margin-bottom: 30px;
-            border-left: 5px solid #3498db;
+            border: 2px dashed #dee2e6;
         }
 
-        .section h2 {
-            color: #2c3e50;
+        .input-group {
+            display: flex;
+            gap: 15px;
             margin-bottom: 20px;
-            font-size: 1.8em;
+        }
+
+        .url-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 50px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .url-input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .embed-button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .embed-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 184, 148, 0.3);
+        }
+
+        .quick-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .platform-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 2px solid #3498db;
+            border-radius: 20px;
+            color: #3498db;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .platform-btn:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .results-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .media-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .media-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .media-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .embed-responsive {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
+
+        .embed-responsive iframe,
+        .embed-responsive video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .media-info {
+            padding: 15px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .media-platform {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .media-url {
+            color: #6c757d;
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .error-message {
+            background: #ffeaa7;
+            color: #e17055;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #e17055;
+            margin: 10px 0;
+        }
+
+        .success-message {
+            background: #55efc4;
+            color: #00b894;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00b894;
+            margin: 10px 0;
+        }
+
+        .code-section {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .code-section h3 {
+            color: #74b9ff;
+            margin-bottom: 15px;
+        }
+
+        .embed-code {
+            background: #1e272e;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            background: #0984e3;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #0767b3;
+        }
+
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+            }
+            
+            .url-input {
+                border-radius: 10px;
+            }
+            
+            .embed-button {
+                border-radius: 10px;
+            }
+            
+            .results-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+        }
+
+        /* Styles pour le contenu du professeur */
+        .profile-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid #3498db;
+        }
+
+        .info-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .info-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .section ul {
+        .info-section ul {
             list-style: none;
+            padding-left: 0;
+        }
+
+        .info-section li {
+            margin-bottom: 10px;
             padding-left: 20px;
-        }
-
-        .section li {
-            margin-bottom: 12px;
             position: relative;
-            padding-left: 25px;
         }
 
-        .section li:before {
+        .info-section li:before {
             content: "•";
             color: #3498db;
             font-weight: bold;
             position: absolute;
             left: 0;
-            font-size: 1.2em;
         }
 
-        .bibliography-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .bibliography-table th {
-            background: #3498db;
-            color: white;
-            padding: 12px 15px;
-            text-align: left;
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
             font-weight: 600;
-        }
-
-        .bibliography-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .bibliography-table tr:hover {
-            background: #f8f9fa;
         }
 
         .link-button {
@@ -127,7 +328,7 @@
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
-            margin: 10px 5px;
+            margin: 5px;
             transition: all 0.3s ease;
         }
 
@@ -135,185 +336,223 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
         }
-
-        .highlight {
-            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .news-alert {
-            background: #ffeaa7;
-            border-left: 5px solid #fdcb6e;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2em;
-            }
-            
-            .header p {
-                font-size: 1.1em;
-            }
-            
-            .main-content {
-                padding: 20px;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-            
-            .bibliography-table {
-                display: block;
-                overflow-x: auto;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Professeur Alphonse Maindo</h1>
-            <p>Chercheur, Enseignant et Défenseur des Droits Humains</p>
+            <h1>🧠 Professeur Alphonse Maindo</h1>
+            <p>Chercheur et Enseignant à l'Université de Kisangani</p>
         </div>
 
         <div class="main-content">
-            <!-- Section Profil Académique -->
-            <div class="section">
-                <h2>🧠 Profil académique</h2>
-                <ul>
-                    <li>Né le <span class="highlight">10 septembre 1967 à Kisangani</span>, RDC</li>
-                    <li>Diplômé en <span class="highlight">sciences politiques et administratives</span> à l'Université de Kisangani (1985–1990)</li>
-                    <li>Docteur en science politique à l'<span class="highlight">Université Paris 1 Panthéon-Sorbonne</span></li>
-                    <li>Professeur ordinaire à l'Université de Kisangani (UniKis)</li>
-                    <li>Chercheur associé au <span class="highlight">Centre d'étude des mondes africains (CEMAF)</span> du CNRS</li>
-                    <li>Enseignant invité dans plusieurs universités africaines, dont l'Université Catholique d'Afrique Centrale à Yaoundé</li>
-                </ul>
-                <a href="https://fr.wikipedia.org/wiki/Alphonse_Maindo" class="link-button" target="_blank">
-                    📖 Biographie sur Wikipédia
-                </a>
-            </div>
-
-            <!-- Section Engagements Politiques et Sociaux -->
-            <div class="section">
-                <h2>🏛️ Engagements politiques et sociaux</h2>
-                <ul>
-                    <li>Cofondateur du <span class="highlight">Groupe Horeb</span>, organisation de défense des droits humains</li>
-                    <li>Coordonnateur du programme <span class="highlight">Démocratie et Développement</span> au <span class="highlight">Gorée Institute</span> (Sénégal)</li>
-                    <li>Intervenant régulier dans les débats publics sur la gouvernance, les élections et les réformes en RDC</li>
-                </ul>
-            </div>
-
-            <!-- Section Bibliographie -->
-            <div class="section">
-                <h2>📚 Bibliographie sélective</h2>
-                <p>Voici une sélection de ses ouvrages et articles les plus marquants :</p>
+            <div class="input-section">
+                <div class="input-group">
+                    <input type="text" id="mediaUrl" class="url-input" 
+                           placeholder="Rechercher des informations sur le professeur...">
+                    <button onclick="searchInfo()" class="embed-button">
+                        🔍 Rechercher
+                    </button>
+                </div>
                 
-                <table class="bibliography-table">
-                    <thead>
-                        <tr>
-                            <th>Titre</th>
-                            <th>Type</th>
-                            <th>Éditeur / Revue</th>
-                            <th>Année</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Voter en temps de guerre – Kisangani (RD Congo) 1997</strong></td>
-                            <td>Livre</td>
-                            <td>L'Harmattan</td>
-                            <td>2001</td>
-                        </tr>
-                        <tr>
-                            <td><strong>L'université en chantier en RD Congo</strong> (avec Pascal Kapagama)</td>
-                            <td>Livre</td>
-                            <td>Karthala</td>
-                            <td>2012</td>
-                        </tr>
-                        <tr>
-                            <td><strong>La républiquette de l'Ituri</strong></td>
-                            <td>Article</td>
-                            <td>Politique africaine n°89</td>
-                            <td>2003</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Survivre à la guerre des autres</strong></td>
-                            <td>Article</td>
-                            <td>Politique africaine n°84</td>
-                            <td>2001</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Polycarpe Divito: l'hibernation d'un millionnaire en Ituri</strong></td>
-                            <td>Article</td>
-                            <td>Politique africaine</td>
-                            <td>2003</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div style="margin-top: 20px;">
-                    <a href="https://shs.cairn.info/publications-de-alphonse-maindo-monga-ngonga--90659?lang=fr" class="link-button" target="_blank">
-                        📄 Publications sur Cairn.info
-                    </a>
-                    <a href="https://rdc.harmattan.fr/index.asp?navig=auteurs&obj=artiste&no=14635" class="link-button" target="_blank">
-                        📚 Catalogue L'Harmattan RDC
-                    </a>
-                    <a href="https://www.laprocure.com/author/0-124728/maindo-monga-ngonga-alphonse" class="link-button" target="_blank">
-                        🛒 Livres sur La Procure
-                    </a>
+                <div class="quick-links">
+                    <button class="platform-btn" onclick="showSection('academic')">Profil Académique</button>
+                    <button class="platform-btn" onclick="showSection('political')">Engagements</button>
+                    <button class="platform-btn" onclick="showSection('bibliography')">Bibliographie</button>
+                    <button class="platform-btn" onclick="showSection('news')">Actualité</button>
+                    <button class="platform-btn" onclick="showSection('links')">Liens Utiles</button>
                 </div>
             </div>
 
-            <!-- Section Actualité Récente -->
-            <div class="section">
-                <h2>🗣️ Actualité récente</h2>
-                <p>En août 2024, il a été convoqué au parquet général de la Tshopo. Il a rassuré le public sur sa liberté et la transparence de la procédure via une déclaration sur sa page Facebook.</p>
-                
-                <div class="news-alert">
-                    <strong>Déclaration récente :</strong> Le Professeur Maindo a confirmé sa liberté et la transparence des procédures judiciaires.
+            <div id="messageContainer"></div>
+
+            <div class="results-section" id="mediaResults">
+                <!-- Section Profil Académique -->
+                <div class="media-card" id="academic-section">
+                    <div class="media-preview">
+                        <div class="profile-content">
+                            <h3>🧠 Profil académique</h3>
+                            <div class="info-section">
+                                <ul>
+                                    <li>Né le <span class="highlight">10 septembre 1967 à Kisangani</span>, RDC</li>
+                                    <li>Diplômé en <span class="highlight">sciences politiques et administratives</span> à l'Université de Kisangani (1985–1990)</li>
+                                    <li>Docteur en science politique à l'<span class="highlight">Université Paris 1 Panthéon-Sorbonne</span></li>
+                                    <li>Professeur ordinaire à l'Université de Kisangani (UniKis)</li>
+                                    <li>Chercheur associé au <span class="highlight">Centre d'étude des mondes africains (CEMAF)</span> du CNRS</li>
+                                    <li>Enseignant invité dans plusieurs universités africaines</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-info">
+                        <span class="media-platform">Profil</span>
+                        <div class="media-url">Section Profil Académique</div>
+                    </div>
                 </div>
-                
-                <a href="https://depechesdelatshopo.com/kisangani-les-premiers-mots-du-professeur-alphonse-maindo-apres-sa-comparution-de-ce-lundi-au-parquet-general-de-la-tshopo" class="link-button" target="_blank">
-                    📰 Article sur Dépêches de la Tshopo
-                </a>
+
+                <!-- Section Engagements Politiques -->
+                <div class="media-card" id="political-section">
+                    <div class="media-preview">
+                        <div class="profile-content">
+                            <h3>🏛️ Engagements politiques et sociaux</h3>
+                            <div class="info-section">
+                                <ul>
+                                    <li>Cofondateur du <span class="highlight">Groupe Horeb</span>, organisation de défense des droits humains</li>
+                                    <li>Coordonnateur du programme <span class="highlight">Démocratie et Développement</span> au <span class="highlight">Gorée Institute</span> (Sénégal)</li>
+                                    <li>Intervenant régulier dans les débats publics sur la gouvernance, les élections et les réformes en RDC</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-info">
+                        <span class="media-platform">Engagements</span>
+                        <div class="media-url">Section Engagements Politiques et Sociaux</div>
+                    </div>
+                </div>
+
+                <!-- Section Bibliographie -->
+                <div class="media-card" id="bibliography-section">
+                    <div class="media-preview">
+                        <div class="profile-content">
+                            <h3>📚 Bibliographie sélective</h3>
+                            <div class="info-section">
+                                <p><strong>Ouvrages et articles marquants :</strong></p>
+                                <ul>
+                                    <li><span class="highlight">Voter en temps de guerre – Kisangani (RD Congo) 1997</span> - L'Harmattan (2001)</li>
+                                    <li><span class="highlight">L'université en chantier en RD Congo</span> (avec Pascal Kapagama) - Karthala (2012)</li>
+                                    <li><span class="highlight">La républiquette de l'Ituri</span> - Politique africaine n°89 (2003)</li>
+                                    <li><span class="highlight">Survivre à la guerre des autres</span> - Politique africaine n°84 (2001)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-info">
+                        <span class="media-platform">Publications</span>
+                        <div class="media-url">Section Bibliographie</div>
+                    </div>
+                </div>
+
+                <!-- Section Actualité -->
+                <div class="media-card" id="news-section">
+                    <div class="media-preview">
+                        <div class="profile-content">
+                            <h3>🗣️ Actualité récente</h3>
+                            <div class="info-section">
+                                <p>En août 2024, il a été convoqué au parquet général de la Tshopo. Il a rassuré le public sur sa liberté et la transparence de la procédure via une déclaration sur sa page Facebook.</p>
+                                <div style="margin-top: 15px;">
+                                    <a href="https://depechesdelatshopo.com/kisangani-les-premiers-mots-du-professeur-alphonse-maindo-apres-sa-comparution-de-ce-lundi-au-parquet-general-de-la-tshopo" class="link-button" target="_blank">
+                                        📰 Lire l'article complet
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-info">
+                        <span class="media-platform">Actualité</span>
+                        <div class="media-url">Dernières nouvelles - Août 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-section">
+                <h3>🔗 Liens Utiles et Ressources</h3>
+                <div id="embedCodeDisplay" class="embed-code">
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <a href="https://fr.wikipedia.org/wiki/Alphonse_Maindo" class="link-button" target="_blank">
+                            📖 Biographie sur Wikipédia
+                        </a>
+                        <a href="https://shs.cairn.info/publications-de-alphonse-maindo-monga-ngonga--90659?lang=fr" class="link-button" target="_blank">
+                            📄 Publications sur Cairn.info
+                        </a>
+                        <a href="https://rdc.harmattan.fr/index.asp?navig=auteurs&obj=artiste&no=14635" class="link-button" target="_blank">
+                            📚 Catalogue L'Harmattan
+                        </a>
+                    </div>
+                </div>
+                <button onclick="copyAllLinks()" class="copy-btn" id="copyButton">
+                    📋 Copier tous les liens
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // Script pour améliorer l'interactivité
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animation des sections au défilement
-            const sections = document.querySelectorAll('.section');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
+        function showSection(section) {
+            const sections = {
+                'academic': 'academic-section',
+                'political': 'political-section',
+                'bibliography': 'bibliography-section',
+                'news': 'news-section'
+            };
+
+            if (sections[section]) {
+                document.getElementById(sections[section]).scrollIntoView({
+                    behavior: 'smooth'
                 });
-            }, { threshold: 0.1 });
+            }
+        }
 
-            sections.forEach(section => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(section);
-            });
+        function searchInfo() {
+            const searchTerm = document.getElementById('mediaUrl').value.toLowerCase();
+            const messageDiv = document.getElementById('messageContainer');
+            
+            messageDiv.innerHTML = '';
+            
+            if (!searchTerm) {
+                showMessage('🔍 Veuillez entrer un terme de recherche', 'error');
+                return;
+            }
 
-            // Ouverture des liens externes dans un nouvel onglet
-            document.querySelectorAll('a[href^="http"]').forEach(link => {
-                link.setAttribute('target', '_blank');
-                link.setAttribute('rel', 'noopener noreferrer');
+            const searchableContent = [
+                { id: 'academic-section', terms: ['académique', 'profil', 'université', 'sorbonne', 'cnrs'] },
+                { id: 'political-section', terms: ['engagement', 'politique', 'droit', 'démocratie', 'gorée'] },
+                { id: 'bibliography-section', terms: ['bibliographie', 'publication', 'livre', 'article', 'harmattan'] },
+                { id: 'news-section', terms: ['actualité', 'news', 'tshopo', 'facebook', 'août'] }
+            ];
+
+            const foundSections = searchableContent.filter(section =>
+                section.terms.some(term => term.includes(searchTerm) || searchTerm.includes(term))
+            );
+
+            if (foundSections.length > 0) {
+                showMessage(`✅ ${foundSections.length} section(s) trouvée(s) pour "${searchTerm}"`, 'success');
+                foundSections.forEach(section => {
+                    document.getElementById(section.id).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            } else {
+                showMessage('❌ Aucune section trouvée pour votre recherche', 'error');
+            }
+        }
+
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('messageContainer');
+            const className = type === 'error' ? 'error-message' : 'success-message';
+            messageDiv.innerHTML = `<div class="${className}">${message}</div>`;
+        }
+
+        function copyAllLinks() {
+            const links = [
+                'https://fr.wikipedia.org/wiki/Alphonse_Maindo',
+                'https://shs.cairn.info/publications-de-alphonse-maindo-monga-ngonga--90659?lang=fr',
+                'https://rdc.harmattan.fr/index.asp?navig=auteurs&obj=artiste&no=14635',
+                'https://depechesdelatshopo.com/kisangani-les-premiers-mots-du-professeur-alphonse-maindo-apres-sa-comparution-de-ce-lundi-au-parquet-general-de-la-tshopo'
+            ].join('\n');
+
+            navigator.clipboard.writeText(links).then(() => {
+                const button = document.getElementById('copyButton');
+                const originalText = button.textContent;
+                button.textContent = '✅ Liens copiés!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
             });
-        });
-    </script>
-</body>
-</html>
+        }
+
+        // Animation au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.media-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+          
